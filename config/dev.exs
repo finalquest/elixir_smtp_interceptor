@@ -70,3 +70,15 @@ config :phoenix_live_view, :debug_heex_annotations, true
 
 # Disable swoosh api client as it is only required for production adapters.
 config :swoosh, :api_client, false
+
+config :pique,
+  auth: false,
+  smtp_opts: [
+    port: 4646,
+  ],
+  mail_handler: SmtpInterceptor.Handler,
+  data_handler: SmtpInterceptor.Handler
+
+config :smtp_interceptor, S.Mailer,
+  adapter: Swoosh.Adapters.Logger,
+  level: :debug
