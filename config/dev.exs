@@ -79,6 +79,6 @@ config :pique,
   mail_handler: SmtpInterceptor.Handler,
   data_handler: SmtpInterceptor.Handler
 
-config :smtp_interceptor, S.Mailer,
-  adapter: Swoosh.Adapters.Logger,
+config :smtp_interceptor, SmtpInterceptor.Mailer,
+  adapter: Swoosh.Adapters.Local,
   level: :debug
