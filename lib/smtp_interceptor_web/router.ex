@@ -17,7 +17,7 @@ defmodule SmtpInterceptorWeb.Router do
   scope "/", SmtpInterceptorWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
+    live "/", LightLive
   end
 
   # Other scopes may use custom stacks.
