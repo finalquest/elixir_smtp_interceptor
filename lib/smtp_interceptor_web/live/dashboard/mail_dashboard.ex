@@ -15,7 +15,20 @@ defmodule SmtpInterceptorWeb.MailDashboard do
   # render
   def render(assigns) do
     ~H"""
-    <.search_input title="Cuenta" form={@form}/>
+    <div class="flex w-screen p-4 h-screen divide-x divide-gray-200">
+      <div class="flex flex-col basis-2/4 pl-4 divide-y-2 divide-gray-200">
+        <div class="pb-2">
+          <.search_input title="Cuenta" form={@form}/>
+        </div>
+        <div class="h-30 bg-sky-50">
+
+        </div>
+      </div>
+      <div class="flex basis-3/4">
+         
+      </div>
+      
+    </div>
     """
   end
 
