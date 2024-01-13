@@ -48,7 +48,8 @@ defmodule SmtpInterceptor.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:plug_cowboy, "~> 2.5"},
-      {:pique, "~> 0.1.0"}
+      {:pique, "~> 0.1.0"},
+      {:poison, "~> 5.0"}
     ]
   end
 
