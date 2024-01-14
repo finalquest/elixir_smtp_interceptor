@@ -28,8 +28,8 @@ defmodule SmtpInterceptorWeb.MailDashboard do
                 <div phx-click="select_mail" phx-value-email={mail.id}>
                   <p class="font-bold">De:</p>
                   <p><%= mail.from%></p>
-                  <p class="font-bold">Destino:</p>
-                  <p><%= mail.to%></p>
+                  <p class="font-bold">Asunto:</p>
+                  <p><%= mail.subject%></p>
                 </div>
               </li>
           </ul>

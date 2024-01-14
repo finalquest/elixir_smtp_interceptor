@@ -1,0 +1,4 @@
+To: test@test.com, pepe@test.com
+Subject: subject loco
+
+Este es el body del mail

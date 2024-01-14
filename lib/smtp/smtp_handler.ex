@@ -14,17 +14,20 @@ defmodule SmtpInterceptor.Handler do
   
    defp extract_body(%{body: body}) do
     lines = String.split(body, "\r\n")
+    subject = lines |> Enum.find(fn line -> String.starts_with?(line, "Subject: ") end)
+                  |> (fn line -> String.replace(line, "Subject: ", "") end).()
     blank_line_index = Enum.find_index(lines, &(&1 == ""))
     body_lines = Enum.slice(lines, blank_line_index + 1, length(lines))
-    Enum.join(body_lines, "\r\n")
+    body = Enum.join(body_lines, "\r\n")
+    %{subject: subject, body: body}
   end
 
   defp create_mail(email) do
-    body = extract_body(email)
+    %{body: body, subject: subject} = extract_body(email)
     new()
     |> to(email.rcpt)
     |> from(email.from)
-    |> subject("Hello, Avengers!")
+    |> subject(subject)
     |> html_body(body)
     |> text_body(body)
   end
