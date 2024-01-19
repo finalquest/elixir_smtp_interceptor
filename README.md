@@ -1,18 +1,22 @@
 # SmtpInterceptor
 
-To start your Phoenix server:
+Runs on Elixir, Phoenix, and LiveView. 
+Utilizes Swoosh mailer to simulate an SMTP server, storing all received emails in memory.
+The in-memory emails can be searched by recipient to preview their appearance. 
+A basic alternative to web-based services like Mailinator.
 
-  * Run `mix setup` to install and setup dependencies
-  * Start Phoenix endpoint with `mix phx.server` or inside IEx with `iex -S mix phx.server`
+## Docker run
 
-Now you can visit [`localhost:4000`](http://localhost:4000) from your browser.
+  * should set the PHX_HOST and PHX_SECRET
+  * docker run -p 4000:4000 -p 4646:4646 -e PHX_HOST=[host] -e SECRET_KEY_BASE=[long secret] ferbas/smtp_interceptor:0.0.1
 
-Ready to run in production? Please [check our deployment guides](https://hexdocs.pm/phoenix/deployment.html).
+## How to use
 
-## Learn more
-
-  * Official website: https://www.phoenixframework.org/
-  * Guides: https://hexdocs.pm/phoenix/overview.html
-  * Docs: https://hexdocs.pm/phoenix
-  * Forum: https://elixirforum.com/c/phoenix-forum
-  * Source: https://github.com/phoenixframework/phoenix
+  * run the docker image
+  * configure the client to point to the container host at the 4646 port.
+  * go to the dashboard at http://[host]:4000
+  * search by recipient
+  
+## out of scope for now.
+  
+  * the http server do not have https configuration for now.

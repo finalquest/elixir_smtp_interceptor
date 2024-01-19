@@ -14,7 +14,7 @@ config :smtp_interceptor, SmtpInterceptorWeb.Endpoint,
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: SmtpInterceptor.Finch
 
 # Disable Swoosh Local Memory Storage
-config :swoosh, local: false
+config :swoosh, local: true
 
 # Do not print debug messages in production
 config :logger, level: :info
