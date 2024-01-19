@@ -6,7 +6,9 @@ import Config
 # which you should run after static files are built and
 # before starting your production server.
 config :smtp_interceptor, SmtpInterceptorWeb.Endpoint,
-  cache_static_manifest: "priv/static/cache_manifest.json"
+  server: true,
+  cache_static_manifest: "priv/static/cache_manifest.json",
+  check_origin: ["http://localhost:4000/"]
 
 # Configures Swoosh API Client
 config :swoosh, api_client: Swoosh.ApiClient.Finch, finch_name: SmtpInterceptor.Finch
@@ -19,3 +21,14 @@ config :logger, level: :info
 
 # Runtime production configuration, including reading
 # of environment variables, is done on config/runtime.exs.
+config :pique,
+  auth: false,
+  smtp_opts: [
+    port: 4646,
+  ],
+  mail_handler: SmtpInterceptor.Handler,
+  data_handler: SmtpInterceptor.Handler
+
+config :smtp_interceptor, SmtpInterceptor.Mailer,
+  adapter: Swoosh.Adapters.Local,
+  level: :debug

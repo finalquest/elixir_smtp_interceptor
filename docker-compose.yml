@@ -1,0 +1,15 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      target: base
+    container_name: render_deploy_web
+    command: mix phx.server
+    restart: unless-stopped
+    ports:
+      - 4000:4000
+    volumes:
+      - .:/render_deploy
+
